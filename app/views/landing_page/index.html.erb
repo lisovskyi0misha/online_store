@@ -1,0 +1,9 @@
+<%# <form action="/landing_page/create", method="post" name="name">
+    <input type="text" placeholder="name", name="user[name]">
+    <input type="submit">
+</form> %>
+
+<%=bootstrap_form_for @user,  url: create_path, method: :post  do |f|%>
+<%=f.text_field :name%>
+<%=f.submit%>
+<%end%> 
