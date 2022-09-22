@@ -43,12 +43,14 @@ ActiveAdmin.register Product do
     selectable_column
     id_column
     column 'Image' do |product|
-      image_tag product.image.variant(resize_to_limit: [200, nil]) if product.image.attached?
+      image_tag product.image.variant(resize_to_limit: [200, 100]) if product.image.attached?
     end
     column :name
     column :old_price
     column :new_price
-    column :description
+    column 'description' do |product|
+      product.description.slice(0, 300)
+    end
     column :brand_name
     column :presence
     column :category 
