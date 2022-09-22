@@ -2,7 +2,6 @@ class LandingPageController < ApplicationController
   
     before_action :create_user
   def new
-    render :index
   end
 
   def create
