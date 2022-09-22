@@ -3,16 +3,17 @@ ActiveAdmin.register Product do
   permit_params :image, :name, :old_price, :new_price, :description, :brand_name, :quantity, :quantity_units
 
   form do |f|
-    inputs do 
-      input :image, as: :file
-      input :name
-      input :old_price
-      input :new_price
-      input :description
-      input :brand_name
-      input :quantity
-      input :quantity_units
+    f.inputs do 
+      f.input :image, as: :file
+      f.input :name
+      f.input :old_price
+      f.input :new_price
+      f.input :description
+      f.input :brand_name
+      f.input :quantity
+      f.input :quantity_units
     end
+    f.actions
   end
 
   show do 
