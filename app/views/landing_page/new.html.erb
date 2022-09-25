@@ -1,28 +1,5 @@
 <!-- # <%=bootstrap_form_for @user, url: landing_page_index_path, method: :post do
 |f|%> # <%=f.text_field :name%> # <%=f.submit%> # <%end%> -->
-<!DOCTYPE html>
-<html lang="uk">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Studio (Version 2.1)</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../../assets/stylesheets/landing.css" />
-  </head>
   <body>
     <header class="header">
       <div class="container">
@@ -335,49 +312,9 @@
         <div class="container">
           <h2 class="section-titles-clients">Постоянные клиенты</h2>
           <ul class="clients-list list">
-            <li class="client-item">
-              <a class="client-link" href="#">
-                <svg class="client-icon" width="106" height="60">
-                  <use href="./images/symbol-defs.svg#Logo"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="client-item">
-              <a class="client-link" href="#">
-                <svg class="client-icon" width="106" height="60">
-                  <use href="./images/symbol-defs.svg#Logo-1"></use>
-                </svg>
-              </a>
-            </li>
-
-            <li class="client-item">
-              <a class="client-link" href="#">
-                <svg class="client-icon" width="106" height="60">
-                  <use href="./images/symbol-defs.svg#Logo-2"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="client-item">
-              <a class="client-link" href="#">
-                <svg class="client-icon" width="106" height="60">
-                  <use href="./images/symbol-defs.svg#Logo-3"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="client-item">
-              <a class="client-link" href="#">
-                <svg class="client-icon" width="106" height="60">
-                  <use href="./images/symbol-defs.svg#Logo-4"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="client-item">
-              <a class="client-link" href="#">
-                <svg class="client-icon" width="106" height="60">
-                  <use href="./images/symbol-defs.svg#Logo-5"></use>
-                </svg>
-              </a>
-            </li>
+            <% @pictures.each do |product|%>
+            <%= render partial: 'product_card', locals: {image: product.image}%>
+            <%end%>
           </ul>
         </div>
       </section>

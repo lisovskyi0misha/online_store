@@ -1,7 +1,9 @@
 class LandingPageController < ApplicationController
   
     before_action :create_user
+    
   def new
+    @pictures = Product.first(4)
   end
 
   def create
