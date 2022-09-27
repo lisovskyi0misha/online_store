@@ -9,7 +9,7 @@ ActiveAdmin.register Product do
       f.input :old_price
       f.input :new_price
       f.input :description
-      f.input :brand_name
+      f.input :brand_name, collection: Product.brand_names.symbolize_keys.keys
       f.input :presence
       f.input :category, collection: Product.categories.symbolize_keys.keys
     end
@@ -56,4 +56,10 @@ ActiveAdmin.register Product do
     column :category 
     actions
   end
+
+  filter :category, as: :select, collection: Product.categories
+  filter :brand_name, as: :select, collection: Product.brand_names
+  filter :new_price
+  filter :old_price
+  filter :presence
 end
