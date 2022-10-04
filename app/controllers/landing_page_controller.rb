@@ -4,6 +4,7 @@ class LandingPageController < ApplicationController
     
   def new
     @pictures = Product.first(4)
+    # binding.break
   end
 
   def create
