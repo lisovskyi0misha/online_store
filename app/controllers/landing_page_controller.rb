@@ -5,6 +5,7 @@ class LandingPageController < ApplicationController
   def new
     @new_products = Product.order(:created_at).reverse_order
     @brands = @new_products.brand_names.keys
+    @posters = Poster.all
   end
 
   def create
