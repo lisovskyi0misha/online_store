@@ -1,3 +1,4 @@
 class Poster < ApplicationRecord
-    has_one_attached :image
+  belongs_to :product
+  has_one_attached :image
 end

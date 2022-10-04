@@ -57,6 +57,12 @@ ActiveAdmin.register Product do
     actions
   end
 
+  sidebar "Poster", only: [:show] do
+    ul do
+      li link_to "Posters",  admin_product_posters_path(resource)
+    end
+  end
+
   filter :category, as: :select, collection: Product.categories
   filter :brand_name, as: :select, collection: Product.brand_names
   filter :new_price
