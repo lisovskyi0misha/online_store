@@ -1,5 +1,13 @@
-<li class="client-item">
+<div class="card" style="width: 18rem;">
     <%if image.attached?%>
-        <%= image_tag image %> 
+        <%= image_tag image.variant(resize_to_limit: [200, nil]), class: "card-img-top" %> 
     <%end%>
-</li>
+    <div class="card-body">
+        <h4 class="card-text"><%=name%></h4>
+        <p class="card-text"><%=brand%></p>
+    </div>
+    <%if old_price.present?%>
+        <p class="list-group-item"><%=old_price%>$</p>
+    <%end%>
+    <p class="list-group-item"><%=new_price%>$</p>
+</div>
