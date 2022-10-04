@@ -3,7 +3,8 @@ class LandingPageController < ApplicationController
     before_action :create_user
     
   def new
-    @pictures = Product.first(4)
+    @new_products = Product.order(:created_at).reverse_order
+    @brands = @new_products.brand_names.keys
   end
 
   def create
