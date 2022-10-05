@@ -19,8 +19,8 @@ ActiveAdmin.register Product do
       f.input :description
       f.input :presence
       f.input :category, collection: Product.categories.symbolize_keys.keys
-      f.semantic_fields_for :product_brand do |i|
-        i.inputs :brand, collection: Brand.all
+      f.semantic_fields_for :product_brand do |brand_f|
+        brand_f.inputs :brand, collection: Brand.all
       end
     end
     f.actions
