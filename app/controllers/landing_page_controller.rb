@@ -3,8 +3,8 @@ class LandingPageController < ApplicationController
     before_action :create_user
     
   def new
-    @new_products = Product.order(:created_at).reverse_order
-    @brands = @new_products.brand_names.keys
+    @new_products = Product.order(:created_at).includes(:brand).reverse_order
+    @brands = Brand.all
     @posters = Poster.all
   end
 
@@ -15,7 +15,6 @@ class LandingPageController < ApplicationController
     else 
         raise AuthenticationError, 'Enter a name' 
     end
-
   end
 
   private

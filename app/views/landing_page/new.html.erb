@@ -38,7 +38,7 @@
             <%# Стилизировать бренды %>
             <ul class="features list">
                 <%@brands.each do |brand|%>
-                    <%=render partial: 'brand_button', locals: {name: brand}%>
+                    <%=render partial: 'brand_button', locals: {name: brand.name, image: brand.image}%>
                 <%end%>
             </ul>
         </div>
@@ -54,7 +54,7 @@
                           name: product.name,
                           old_price: product.old_price,
                           new_price: product.new_price,
-                          brand: product.brand_name
+                          brand: product.brand.name
                           }%>
                 <%end%>
             </ul>
