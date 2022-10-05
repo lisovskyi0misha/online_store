@@ -4,7 +4,9 @@ class LandingPageController < ApplicationController
     
   def new
     @new_products = Product.order(:created_at).reverse_order
-    @brands = @new_products.brand_names.keys
+    binding.break
+
+    @brands = Brand.all
     @posters = Poster.all
   end
 
