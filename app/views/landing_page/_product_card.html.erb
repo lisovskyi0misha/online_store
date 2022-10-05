@@ -1,13 +1,18 @@
-<div class="card" style="width: 18rem;">
+<a class="card" style="width: 18rem;">
     <%if image.attached?%>
-        <%= image_tag image.variant(resize_to_limit: [200, nil]), class: "card-img-top" %> 
+        <%= image_tag image.variant(resize_to_limit: [200, nil]), class: "card-img-wrapper" %> 
     <%end%>
     <div class="card-body">
         <h4 class="card-text"><%=name%></h4>
         <p class="card-text"><%=brand.capitalize%></p>
-    </div>
-    <%if old_price.present?%>
-        <p class="list-group-item"><%=old_price%>$</p>
+        <%if old_price.present?%>
+        <s class="card_old-price"><%=old_price%>$</s>
     <%end%>
-    <p class="list-group-item"><%=new_price%>$</p>
-</div>
+
+    <p class="card_new-price">
+    <%=new_price%>$</p>
+    </div>
+    
+    
+
+</a>

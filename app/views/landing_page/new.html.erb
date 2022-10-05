@@ -9,7 +9,7 @@
                 <%end%>
             <%end%>
         </div>
-        <%# Растянуть картинку %>
+        <%# Растянуть картинку +++ %>
         <div class="carousel-inner">
             <%@posters.each do |poster|%>
                 <%if poster == @posters.first%>
@@ -18,7 +18,7 @@
                     <div class="carousel-item">
                 <%end%>
                     <%if poster.image.attached?%>
-                        <%=image_tag poster.image.variant(resize_to_limit: [1000, nil])%>
+                        <%=image_tag poster.image.variant(resize_to_limit: [1000, nil]), class:"d-block w-100"%>
                     <%end%>
                 </div>
             <%end%>
@@ -34,10 +34,10 @@
     </div>
     <section class="section">
         <div class="container">
-            <h2 class="visually-hidden">Brands</h2>
-            <%# Стилизировать бренды %>
+            <h2 class="section-titles-clients">Brands</h2>
+            <%# Стилизировать бренды ++++%>
             <ul class="features list">
-                <%@brands.each do |brand|%>
+                <%@brands.each do |brand|  %>
                     <%=render partial: 'brand_button', locals: {name: brand.name, image: brand.image}%>
                 <%end%>
             </ul>

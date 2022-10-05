@@ -165,8 +165,9 @@ address {
   display: flex;
   margin-left: auto;
 }
-x .web-blue {
-  color: var(--accent-color);
+
+.web-blue {
+  color: #2196f3;;
 }
 
 .adress-contact-li {
@@ -188,7 +189,7 @@ x .web-blue {
 
 /* Логотип */
 .logo {
-  color: var(--primary-text-color);
+  color: #212121;
   font-size: 26px;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
@@ -353,9 +354,10 @@ x .web-blue {
   line-height: 1.14;
   text-transform: uppercase;
   margin-bottom: 10px;
+  text-align: center;
 }
 
-.fetures-item {
+.features-item {
   width: 270px;
 }
 
@@ -396,9 +398,9 @@ x .web-blue {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120px;
   background-color: #f5f4fa;
-  border-radius: 4px;
+  padding: 20px 0;
+  border-radius: 50px;
   margin-bottom: 30px;
 }
 
@@ -706,6 +708,28 @@ footer {
 }
 
 /* Cards */
+.card{
+  height: 300px;
+  margin-right: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  color: #212121;
+}
+.card-img-wrapper{
+  width: 100%;
+  height: 150px;
+}
+.card_old-price{
+  font-weight: 400;
+  font-size: 14px;
+  color: #757575;
+
+}
+.card_new-price{
+  font-weight: 600;
+  font-size: 14px;
+  color: #212121;
+}
 
 .cards-link:hover,
 .cards-link:focus {
@@ -856,4 +880,8 @@ footer {
 }
 .checkbox-link {
   color: #2196f3;
+}
+/* Brand */
+.brand-item{
+  width: 100px;
 }

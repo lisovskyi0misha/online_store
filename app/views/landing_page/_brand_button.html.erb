@@ -1,10 +1,8 @@
-<li class="fetures-item">
+<li class="features-item">
     <div class="features-icon-wrapper">
-        <svg width="70" height="70">
             <%if image.attached?%>
-                <%=image_tag image%>
+                <%=image_tag image , class:"brand-item"%>
             <%end%>
-        </svg>
     </div>
     <h3 class="features-title"><%=name%></h3>
 </li>
