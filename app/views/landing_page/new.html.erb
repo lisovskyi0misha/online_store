@@ -49,7 +49,7 @@
             <h2 class="section-titles-clients">New Releases</h2>
             <ul class="clients-list list">
                 <% @new_products.each do |product|%>
-                    <%= render partial: 'product_card', locals: {
+                    <%= render partial: 'shared/product_card', locals: {
                           image: product.image, 
                           name: product.name,
                           old_price: product.old_price,
