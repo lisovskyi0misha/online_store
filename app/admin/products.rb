@@ -1,6 +1,14 @@
 ActiveAdmin.register Product do 
+
+  before_action :create_brand, only: [:create]
+
+  controller do
+    def create_brand
+      resource.build_brand if resource.product_brand.nil?
+    end
+  end
   
-  permit_params :image, :name, :old_price, :new_price, :description, :brand_name, :presence, :category
+  permit_params :image, :name, :old_price, :new_price, :description, :presence, :category, product_brand_attributes: [:brand_id, :name]
 
   form do |f|
     f.inputs do 
@@ -9,9 +17,11 @@ ActiveAdmin.register Product do
       f.input :old_price
       f.input :new_price
       f.input :description
-      f.input :brand_name
       f.input :presence
       f.input :category, collection: Product.categories.symbolize_keys.keys
+      f.semantic_fields_for :product_brand do |brand_f|
+        brand_f.inputs :brand, collection: Brand.all
+      end
     end
     f.actions
   end
@@ -27,7 +37,9 @@ ActiveAdmin.register Product do
       row :old_price
       row :new_price
       row :description
-      row :brand_name
+      row :product_brand do 
+        resource.brand.name
+      end
       row :presence
       row :category 
     end
@@ -51,9 +63,23 @@ ActiveAdmin.register Product do
     column 'description' do |product|
       product.description.slice(0, 300)
     end
-    column :brand_name
+    column :product_brand do |product|
+      product&.brand&.name
+    end
     column :presence
     column :category 
     actions
   end
+
+  sidebar "Poster", only: [:show] do
+    ul do
+      li link_to "Posters",  admin_product_posters_path(resource)
+    end
+  end
+
+  filter :category, as: :select, collection: Product.categories
+  filter :new_price
+  filter :old_price
+  filter :presence
+  filter :brand
 end

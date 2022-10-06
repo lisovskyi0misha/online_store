@@ -1,7 +1,11 @@
 class LandingPageController < ApplicationController
   
     before_action :create_user
+    
   def new
+    @new_products = Product.order(:created_at).includes(:brand).reverse_order
+    @brands = Brand.all
+    @posters = Poster.all
   end
 
   def create
@@ -11,7 +15,6 @@ class LandingPageController < ApplicationController
     else 
         raise AuthenticationError, 'Enter a name' 
     end
-
   end
 
   private

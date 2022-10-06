@@ -1,4 +1,66 @@
-<%=bootstrap_form_for @user,  url: landing_page_index_path, method: :post  do |f|%>
-<%=f.text_field :name%>
-<%=f.submit%>
-<%end%> 
+<main>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-indicators">
+            <%@posters.each_with_index do |poster, index|%>
+                <%if poster == @posters.first%>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <%else%>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=index%>" aria-label="Slide <%=index%>"></button>
+                <%end%>
+            <%end%>
+        </div>
+        <%# Растянуть картинку +++ %>
+        <div class="carousel-inner">
+            <%@posters.each do |poster|%>
+                <%if poster == @posters.first%>
+                    <div class="carousel-item active">
+                <%else%>
+                    <div class="carousel-item">
+                <%end%>
+                    <%if poster.image.attached?%>
+                        <%=image_tag poster.image.variant(resize_to_limit: [1000, nil]), class:"d-block w-100"%>
+                    <%end%>
+                </div>
+            <%end%>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-titles-clients">Brands</h2>
+            <%# Стилизировать бренды ++++%>
+            <ul class="features list">
+                <%@brands.each do |brand|  %>
+                    <%=render partial: 'brand_button', locals: {name: brand.name, image: brand.image}%>
+                <%end%>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section clients">
+        <div class="container">
+            <h2 class="section-titles-clients">New Releases</h2>
+            <ul class="clients-list list">
+                <% @new_products.each do |product|%>
+                    <%= render partial: 'product_card', locals: {
+                          image: product.image, 
+                          name: product.name,
+                          old_price: product.old_price,
+                          new_price: product.new_price,
+                          brand: product.brand.name
+                          }%>
+                <%end%>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<script src="./js/modal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
