@@ -9,12 +9,13 @@ class LandingPageController < ApplicationController
   end
 
   def create
-    @user.name = params[:user][:name]
-    if @user.valid?
-        @user.save
-    else 
-        raise AuthenticationError, 'Enter a name' 
+    begin
+      Users::Signup.new(params, @user).call
+      flash[:success] = 'You`ve been successfully signed up'
+    rescue AuthenticationError => e
+      flash[:error] = e.message
     end
+    redirect_to root_path
   end
 
   private

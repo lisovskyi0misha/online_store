@@ -62,5 +62,13 @@
     </section>
 </main>
 
-<script src="./js/modal.js"></script>
+<%= bootstrap_form_for @user, url: landing_page_index_path, method: :post do |form|%>
+<%= form.text_field :name%>
+<%= form.email_field :email%>
+<%= form.phone_field :phone%>
+<%= form.password_field :password%>
+<%= form.password_field :password_confirmation%>
+<%= form.submit%>
+<%end%>
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
