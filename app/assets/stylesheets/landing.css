@@ -67,7 +67,10 @@ address {
 }
 
 .section {
-  padding: 94px 0;
+  padding-top: 50px;
+}
+.section:last-of-type{
+  padding-bottom: 50px;
 }
 
 .list {
@@ -233,7 +236,7 @@ address {
 }
 
 .site-nav .nav-link.current {
-  color: var(--accent-color);
+  color: #2196F3;
   position: relative;
 }
 
@@ -404,6 +407,7 @@ address {
   border-radius: 50px;
   margin-bottom: 30px;
 }
+
 
 /* Чем мы занимаемся */
 
@@ -885,4 +889,13 @@ footer {
 /* Brand */
 .brand-item{
   width: 100px;
+}
+.brand-link{
+  cursor: pointer;
+  text-decoration: none;
+  color: #212121;
+}
+.brand_link:hover{
+  color: #2196F3;
+
 }
